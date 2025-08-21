@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../static/signin.css" rel="stylesheet">
+    <title>Dream Journal - Sign Up!</title>
+    <script src="../static/signin.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-div">
+            <div class="nav-logo">
+                <a class="navbar-brand nav-link" href="/"><img class="logo" src="../static/images/logo.png">Dream Journal</a>
+            </div>
+            <div class="nav-side">
+                <a class="nav-link active nav-item-side" aria-current="page" href="/">Home</a>
+                <a class="nav-link nav-item-side" href="sign-in">Sign Up</a>
+                <a class="nav-link nav-item-side" href="log-in">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          {% if category == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          {% else %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+    <main class="form-signin m-auto">
+        <form id="signUpForm" method="post">
+            <h1 class="h3 my-3 fw-normal">Sign Up</h1>
+
+            <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" control-id="ControlID-1">
+                <label for="name">Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" name="email" class="form-control" id="email" placeholder="name@example.com">
+                <label for="email">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" name="password1" class="form-control" id="password1" placeholder="Password" control-id="ControlID-3">
+                <label for="password1">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" name="password2" class="form-control" id="password2" placeholder="Confirm Password" control-id="ControlID-4">
+                <label for="password2">Confirm Password</label>
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit" control-id="ControlID-4">Sign Up</button>
+        </form>
+    </main>
+
+    <section class="footer">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="mt-5 mb-3 text-body-secondary">© Dream Journal</p>
+
+                <ul class="nav col-md-4 justify-content-end">
+                    <li class="nav-item"><a href=".navbar" class="nav-link px-2 text-body-secondary">Home</a></li>
+                    <li class="nav-item"><a href="log-in" class="nav-link px-2 text-body-secondary">Log In</a></li>
+                </ul>
+            </footer>
+        </div>
+    </section>
+</body>
+</html>
